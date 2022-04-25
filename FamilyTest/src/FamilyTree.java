@@ -41,4 +41,37 @@ public class FamilyTree {
             next.sibling = familyMember;
         }
     }
+    
+    public String toString() {
+        String familyDetails = new String();
+        FamilyTreeNode familyMember2 = this.manager.partner;
+        familyDetails += this.manager.name + " partner is " + familyMember2.name + "\n";
+        FamilyTreeNode familyMember = this.manager.child;
+        if (familyMember == null) {
+            familyDetails += "  has no children\n";
+        } else {
+            while (familyMember != null) {
+                familyDetails += "  " + familyMember.name + "\n";
+                familyDetails += this.getChildren(familyMember);
+                familyMember = familyMember.sibling;
+            }
+        }
+        familyDetails += familyMember2.name + " partner is " + this.manager.name + "\n";
+        familyDetails += this.getChildren2(familyMember2);
+        return familyDetails;
+    }
+    
+    private String getChildren(FamilyTreeNode familyMember) {
+        String childsDetails = new String();
+        familyMember = familyMember.child;
+        return childsDetails;
+        
+    }
+    
+        private String getChildren2(FamilyTreeNode familyMember2) {
+        String childsDetails = new String();
+        familyMember2 = familyMember2.child;
+        return childsDetails;
+        
+    }
 }
