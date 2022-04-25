@@ -10,8 +10,7 @@ public class FamilyTest {
         do {
             System.out.println("0: quit");
             System.out.println("1: add child to current");
-            System.out.println("2: find family member");
-            System.out.println("3: display family");
+            System.out.println("2: display family");
             option = Input.getInteger("input option: ");
             switch (option) {
                 case 1:
@@ -21,9 +20,7 @@ public class FamilyTest {
                 case 2:
                     System.out.println("Test 2");
                     break;
-                case 3:
-                    System.out.println("Test 3");
-                    break;             
+                    
             }
         } while (option != 0);
     }
