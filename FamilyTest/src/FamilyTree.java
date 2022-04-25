@@ -57,7 +57,15 @@ public class FamilyTree {
             }
         }
         familyDetails += familyMember2.name + " partner is " + this.manager.name + "\n";
-        familyDetails += this.getChildren2(familyMember2);
+        if (familyMember == null) {
+            familyDetails += "  has no children\n";
+        } else {
+            while (familyMember != null) {
+                familyDetails += "  " + familyMember.name + "\n";
+                familyDetails += this.getChildren(familyMember);
+                familyMember = familyMember.sibling;
+            }
+        }
         return familyDetails;
     }
     
@@ -68,10 +76,4 @@ public class FamilyTree {
         
     }
     
-        private String getChildren2(FamilyTreeNode familyMember2) {
-        String childsDetails = new String();
-        familyMember2 = familyMember2.child;
-        return childsDetails;
-        
-    }
 }
