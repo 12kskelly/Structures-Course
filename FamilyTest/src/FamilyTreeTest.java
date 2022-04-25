@@ -1,5 +1,5 @@
 
-public class FamilyTest {
+public class FamilyTreeTest {
 
     public static void main(String[] args) {
         String name = Input.getString("Input the ancestor's name: ");
@@ -18,7 +18,7 @@ public class FamilyTest {
                     familytree.addChild(name);
                     break;  
                 case 2:
-                    System.out.println("Test 2");
+                    System.out.println(familytree);
                     break;
                     
             }
