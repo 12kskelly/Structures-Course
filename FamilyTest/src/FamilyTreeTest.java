@@ -27,6 +27,7 @@ public class FamilyTreeTest {
                 System.out.println("Please choose a valid menu option between 0 and 2 \n");
             }
         }while (option != 0);
+        System.out.println("Thanks for visiting.");
         }
 
     }
