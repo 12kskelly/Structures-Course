@@ -15,7 +15,8 @@ public class FamilyTest {
             option = Input.getInteger("input option: ");
             switch (option) {
                 case 1:
-                    System.out.println("Test 1");
+                    name = Input.getString("input the child's name: ");
+                    familytree.addChild(name);
                     break;  
                 case 2:
                     System.out.println("Test 2");
