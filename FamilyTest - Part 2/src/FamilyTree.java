@@ -64,7 +64,7 @@ public class FamilyTree {
                     familyMember = familyMember.sibling;
                 }
             }
-            familyDetails += familyMember2.name + " partner is " + this.manager.name + "\n";
+            familyDetails += familyMember2.name + " partner is " + this.mainAncestor.name + "\n";
             if (familyMember == null) {
                 familyDetails += "  has no children\n";
             } else {
