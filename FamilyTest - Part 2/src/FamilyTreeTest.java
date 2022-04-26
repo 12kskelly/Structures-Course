@@ -34,8 +34,11 @@ public class FamilyTreeTest {
                             System.out.println(familytree);
                         }
                         break;
-                     case 3:
+                    case 3:
                         System.out.println(familytree);
+                        break;
+                    case 4:
+                        System.out.println("not found");
                         break;
                 }
             }

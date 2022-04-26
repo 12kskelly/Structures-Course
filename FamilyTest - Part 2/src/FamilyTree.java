@@ -12,14 +12,14 @@ public class FamilyTree {
         private FamilyTreeNode child;
     }
     
-    private FamilyTreeNode manager;
+    private FamilyTreeNode mainAncestor;
     private FamilyTreeNode current;
     private FamilyTreeNode current2;
     
-    public FamilyTree(String managerName) {
-        this.manager = new FamilyTreeNode();
-        this.manager.name = managerName;
-        this.current = this.manager;
+    public FamilyTree(String mainAncestorName) {
+        this.mainAncestor = new FamilyTreeNode();
+        this.mainAncestor.name = mainAncestorName;
+        this.current = this.mainAncestor;
     }
     
     public void addPartner(String name) {
@@ -48,13 +48,13 @@ public class FamilyTree {
     
     public String toString() {
         String familyDetails = new String();
-        FamilyTreeNode familyMember2 = this.manager.partner;
-        if (this.manager.partner == null){
-            familyDetails = this.manager.name + " doesn't have any family";
+        FamilyTreeNode familyMember2 = this.mainAncestor.partner;
+        if (this.mainAncestor.partner == null){
+            familyDetails = this.mainAncestor.name + " doesn't have any family";
         }
         else{
-            familyDetails += this.manager.name + " partner is " + familyMember2.name + "\n";
-            FamilyTreeNode familyMember = this.manager.child;
+            familyDetails += this.mainAncestor.name + " partner is " + familyMember2.name + "\n";
+            FamilyTreeNode familyMember = this.mainAncestor.child;
             if (familyMember == null) {
                 familyDetails += "  has no children\n";
             } else {
@@ -101,6 +101,7 @@ public class FamilyTree {
         } else {
         }
     }
+    
     
     }
     
