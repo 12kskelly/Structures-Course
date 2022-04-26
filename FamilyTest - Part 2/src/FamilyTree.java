@@ -81,6 +81,16 @@ public class FamilyTree {
     private String getChildren(FamilyTreeNode familyMember) {
         String childsDetails = new String();
         familyMember = familyMember.child;
+        if (familyMember == null) {
+            childsDetails += " has no children\n";
+        } else {
+            while (familyMember != null) {
+                childsDetails += "    " + familyMember.name + "\n";
+                familyMember = familyMember.sibling;
+            }
+        }
+        
+        
         return childsDetails;
         
     }
