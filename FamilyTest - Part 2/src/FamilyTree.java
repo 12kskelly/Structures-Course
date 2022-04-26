@@ -1,6 +1,8 @@
 
 public class FamilyTree {
     
+    public class NoPartnerException extends Exception{}
+    
     private class FamilyTreeNode {
         private String name;
         private FamilyTreeNode ancestor;
@@ -26,20 +28,26 @@ public class FamilyTree {
         this.current.partner = familyMember;
     }
     
-    public void addChild(String name) {
+    public void addChild(String name) throws NoPartnerException{
         FamilyTreeNode familyMember = new FamilyTreeNode();
         familyMember.name = name;
         familyMember.ancestor = this.current;
-        familyMember.partner = this.current.partner;
-        if (this.current.child == null) {
-            this.current.child = familyMember;
-        } else {
-            FamilyTreeNode next = this.current.child;
-            while (next.sibling != null) {
-                next = next.sibling;
-            }
-            next.sibling = familyMember;
+        familyMember.ancestor = this.current.partner;
+        if (this.current.partner == null){
+            throw new NoPartnerException();
         }
+        else {           
+            if (this.current.child == null) {
+                this.current.child = familyMember;
+            } else {
+                FamilyTreeNode next = this.current.child;
+                while (next.sibling != null) {
+                    next = next.sibling;
+                }
+                next.sibling = familyMember;
+                    }
+            }
+
     }
     
     public String toString() {

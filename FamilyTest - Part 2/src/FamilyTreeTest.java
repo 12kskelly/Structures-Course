@@ -14,8 +14,12 @@ public class FamilyTreeTest {
                 option = Input.getInteger("input option: ");
                 switch (option) {
                     case 1:
+                        try{
                         name = Input.getString("input the child's name: ");
                         familytree.addChild(name);
+                        } catch(FamilyTree.NoPartnerException e){
+                            System.out.println("There must be two parents to add on a child\n");
+                        }
                         break;
                     case 2:
                         name = Input.getString("What is their partner's name: ");
@@ -27,7 +31,7 @@ public class FamilyTreeTest {
                 }
             }
             catch(Exception e){
-                System.out.println("Please choose a valid menu option between 0 and 2 \n");
+                System.out.println("Please choose a valid menu option between 0 and 3 \n");
             }
         }while (option != 0);
         System.out.println("Thanks for visiting.");
