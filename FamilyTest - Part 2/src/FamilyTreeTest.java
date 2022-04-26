@@ -15,15 +15,22 @@ public class FamilyTreeTest {
                 switch (option) {
                     case 1:
                         try{
-                        name = Input.getString("input the child's name: ");
-                        familytree.addChild(name);
-                        } catch(FamilyTree.NoPartnerException e){
-                            System.out.println("There must be two parents to add on a child\n");
+                            familytree.checkPartner(name);
+                            name = Input.getString("What is the child's name?: ");
+                            familytree.addChild(name);
+                            System.out.println("Child Added\n");
+                        } catch(FamilyTree.PartnerException e){
+                            System.out.println("There has to be two parent to a child");
                         }
                         break;
                     case 2:
-                        name = Input.getString("What is their partner's name: ");
-                        familytree.addPartner(name);
+                        try{
+                            familytree.checkPartner(name);
+                            System.out.println("There is already a partner for this person\n");
+                        } catch(FamilyTree.PartnerException e){
+                            name = Input.getString("What is the partner's name?: ");
+                            familytree.addPartner(name);
+                        }
                         break;
                      case 3:
                         System.out.println(familytree);
