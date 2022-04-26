@@ -53,28 +53,33 @@ public class FamilyTree {
     public String toString() {
         String familyDetails = new String();
         FamilyTreeNode familyMember2 = this.manager.partner;
-        familyDetails += this.manager.name + " partner is " + familyMember2.name + "\n";
-        FamilyTreeNode familyMember = this.manager.child;
-        if (familyMember == null) {
-            familyDetails += "  has no children\n";
-        } else {
-            while (familyMember != null) {
-                familyDetails += "  " + familyMember.name + "\n";
-                familyDetails += this.getChildren(familyMember);
-                familyMember = familyMember.sibling;
+        if (this.manager.partner == null){
+            familyDetails = this.manager.name + " doesn't have any family";
+        }
+        else{
+            familyDetails += this.manager.name + " partner is " + familyMember2.name + "\n";
+            FamilyTreeNode familyMember = this.manager.child;
+            if (familyMember == null) {
+                familyDetails += "  has no children\n";
+            } else {
+                while (familyMember != null) {
+                    familyDetails += "  " + familyMember.name + "\n";
+                    familyDetails += this.getChildren(familyMember);
+                    familyMember = familyMember.sibling;
+                }
+            }
+            familyDetails += familyMember2.name + " partner is " + this.manager.name + "\n";
+            if (familyMember == null) {
+                familyDetails += "  has no children\n";
+            } else {
+                while (familyMember != null) {
+                    familyDetails += "  " + familyMember.name + "\n";
+                    familyDetails += this.getChildren(familyMember);
+                    familyMember = familyMember.sibling;
+                }
             }
         }
-        familyDetails += familyMember2.name + " partner is " + this.manager.name + "\n";
-        if (familyMember == null) {
-            familyDetails += "  has no children\n";
-        } else {
-            while (familyMember != null) {
-                familyDetails += "  " + familyMember.name + "\n";
-                familyDetails += this.getChildren(familyMember);
-                familyMember = familyMember.sibling;
-            }
-        }
-        return familyDetails;
+            return familyDetails;
     }
     
     private String getChildren(FamilyTreeNode familyMember) {
