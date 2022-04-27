@@ -49,6 +49,7 @@ public class FamilyTreeTest {
                         break;
                     case 4:
                         try{
+                            System.out.println(familytree);
                             name = Input.getString("Who would you like to search for? \n");
                             familytree.findMember(name);
                             System.out.println(familytree.getCurrent());
