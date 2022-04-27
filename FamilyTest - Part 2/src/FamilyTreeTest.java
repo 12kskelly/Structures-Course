@@ -2,9 +2,11 @@
 public class FamilyTreeTest {
 
     public static void main(String[] args) {
-        String name = Input.getString("Input the ancestor's name: ");
+        String name = Input.getString("Input the ancestor's name \n");
+        name += (" (Identifier 1)");
         FamilyTree familytree = new FamilyTree(name);
         Integer option = 7;
+        Integer identifier = 1;
         do {
             try{
                 System.out.println("0: Quit");
@@ -17,7 +19,11 @@ public class FamilyTreeTest {
                     case 1:
                         try{
                             familytree.checkPartner(name);
-                            name = Input.getString("What is the child's name?: ");
+                            System.out.println(familytree);
+                            name = Input.getString("Who would you like to add the child to? \n");
+                            name = Input.getString("What is the child's name? \n");
+                            identifier ++;
+                            name += " (Identifier " + identifier + ")";
                             familytree.addChild(name);
                             System.out.println(familytree);
                         } catch(FamilyTree.PartnerException e){
@@ -29,7 +35,11 @@ public class FamilyTreeTest {
                             familytree.checkPartner(name);
                             System.out.println("There is already a partner for this person\n");
                         } catch(FamilyTree.PartnerException e){
+                            System.out.println(familytree);
+                            name = Input.getString("Who would you like to add the partner to? \n ");
                             name = Input.getString("What is the partner's name?: \n");
+                            identifier++;
+                            name += " (Identifier " + identifier + ")";
                             familytree.addPartner(name);
                             System.out.println(familytree);
                         }
@@ -38,12 +48,18 @@ public class FamilyTreeTest {
                         System.out.println(familytree);
                         break;
                     case 4:
-                        System.out.println("not found");
+                        try{
+                            name = Input.getString("Who would you like to search for? \n");
+                            familytree.findMember(name);
+                            System.out.println(familytree.getCurrent());
+                        } catch(FamilyTree.MemberNotFoundException e){
+                            System.out.println("We cannot find this person");
+                        } 
                         break;
                 }
             }
             catch(Exception e){
-                System.out.println("Please choose a valid menu option between 0 and 3 \n");
+                System.out.println("Please choose a valid menu option between 0 and 4 \n");
             }
         }while (option != 0);
         System.out.println("\nThanks for visiting.");
