@@ -10,8 +10,8 @@ public class FamilyTreeTest {
         do {
             try{
                 System.out.println("0: Quit");
-                System.out.println("1: Add child to current");
-                System.out.println("2: Add partner to current");
+                System.out.println("1: Add child");
+                System.out.println("2: Add partner");
                 System.out.println("3: Display family");
                 System.out.println("4: Find family member");
                 option = Input.getInteger("Input Option: ");
