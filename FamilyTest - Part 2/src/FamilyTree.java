@@ -4,6 +4,8 @@ public class FamilyTree {
     
     public class PartnerException extends Exception{}
     
+    public class MemberNotFoundException extends Exception{}
+    
     private class FamilyTreeNode {
         private String name;
         private FamilyTreeNode ancestor;
@@ -102,6 +104,59 @@ public class FamilyTree {
         }
     }
     
+    private FamilyTreeNode checkChild(String name, FamilyTreeNode familyMember) {
+    familyMember=familyMember.child;
+    Boolean searching=familyMember!=null;
+    while (searching) {
+        if (name.equalsIgnoreCase(familyMember.name)) {
+            searching = false;
+        } else {
+            familyMember = familyMember.sibling;
+            if (familyMember == null) {
+                searching = false;
+            }
+        }
+    }
+    return familyMember;
+}
+    
+    
+    public void findMember(String name) throws MemberNotFoundException{
+    FamilyTreeNode familyMember;
+    FamilyTreeNode child;
+    if (name.equalsIgnoreCase(this.mainAncestor.name)) {
+        familyMember = this.mainAncestor;
+    } else {
+        if(this.mainAncestor.child==null)
+            throw new MemberNotFoundException();
+        familyMember = this.checkChild(name, this.mainAncestor);
+        if (familyMember == null) {
+            child = this.mainAncestor.child;
+            while (familyMember==null) {
+                familyMember = this.checkChild(name, child);
+                if (familyMember == null) {
+                    child = child.sibling;
+                    if (child == null) {
+                        throw new MemberNotFoundException();
+                    }
+                }
+            }
+        }
+    }
+    this.current=familyMember;
+}
+    
+    public String getCurrent() {
+    String currentDetails = new String();
+    currentDetails += this.current.name;
+    if (this.current.ancestor != null) {
+        currentDetails += " partner " + this.current.ancestor.name + '\n';
+    } else {
+        currentDetails += " has no partner\n";
+    }
+    currentDetails += this.getChildren(this.current);
+    return currentDetails;
+}
     
     }
     
